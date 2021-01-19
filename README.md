@@ -77,6 +77,8 @@ For example:
 ```
 More information please see [here](https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/)
 ### 1.4 Restore db,...etc
+![img.png](img/tree.png)
+
 Assume copy docker file to /root/docker folder
 ```shell
 docker-compose --file /root/docker/mongo.yml up -d
