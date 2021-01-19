@@ -1,0 +1,28 @@
+services:
+
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    command: --max_allowed_packet=32505856
+    restart: always
+    networks:
+      - mysql-network
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=nttuan
+      - MYSQL_PASSWORD=nttuan
+    volumes:
+      - /appdata/db/mysql_nttuan.live:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    networks:
+      - mysql-network
+    ports:
+      - 8082:80
+    environment:
+      - PMA_ARBITRARY=1
+networks:
+  mysql-network:
