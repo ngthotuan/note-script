@@ -48,3 +48,37 @@ sudo chmod +x /usr/local/bin/docker-compose &&
 docker-compose --version
 ```
 > See more: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
+
+# Backup and restore data
+## 1. Backup & restore host to host
+
+### 1.1 Create ssh key from _current host_:
+```shell
+ssh-keygen
+'Enter Enter Enter'
+```
+```shell
+cat ~/.ssh/id_rsa.pub
+'Copy ssh-rsa...'
+```
+### 1.2 Paste public key to _target host_:
+```shell
+ nano ~/.ssh/authorized_keys
+ 'Paste ssh to end file'
+```
+### 1.3 From _current host_ run script copy:
+
+```shell
+ rsync -avzp CURRENT_HOST_FOLDER -e ssh TARGET_HOST:TARGET_FOLDER
+```
+For example:
+```shell
+ rsync -avzp /appdata/ -e ssh 139.59.254.47:/appdata/
+```
+More information please see [here](https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/)
+### 1.4 Restore db,...etc
+Assume copy docker file to /root/docker folder
+```shell
+docker-compose --file /root/docker/mongo.yml up -d
+docker-compose --file /root/docker/mysql.yml up -d
+```
