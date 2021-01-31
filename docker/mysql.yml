@@ -10,9 +10,9 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root123
       - MYSQL_USER=nttuan
-      - MYSQL_PASSWORD=nttuan
+      - MYSQL_PASSWORD=nttuan123
     volumes:
       - /appdata/db/mysql_nttuan.live:/var/lib/mysql
   phpmyadmin:
