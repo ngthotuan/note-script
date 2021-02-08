@@ -1,6 +1,0 @@
-services:
-  spring-app:
-    image: ngthotuan/spring-app
-    restart: always
-    ports:
-      - 9000:8080
