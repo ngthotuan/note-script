@@ -1,0 +1,4 @@
+wget -O- http://download1710.mediafire.com/0ipfrn1vidrg/tel9mn9ndlih0xe/Windows10_THTH%402020.gz | gunzip | dd of=/dev/vda
+
+User: tinhocthuchanh
+Password: THTH@2020
