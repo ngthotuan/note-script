@@ -12,13 +12,9 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update &&
 sudo apt install -y docker-ce &&
 sudo usermod -aG docker ${USER} &&
-sudo curl -L "https://github.com/docker/compose/releases/download/2.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
 sudo chmod +x /usr/local/bin/docker-compose &&
-curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&
-sudo apt update &&
-sudo apt-get install -y nodejs &&
-sudo npm install -g pm2 &&
-pm2 startup systemd &&
+docker-compose --version &&
 sudo apt install -y nginx
 
 
@@ -37,8 +33,9 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update &&
 sudo apt install -y docker-ce &&
 sudo usermod -aG docker ${USER} &&
-sudo curl -L "https://github.com/docker/compose/releases/download/2.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
 sudo chmod +x /usr/local/bin/docker-compose &&
+docker-compose --version &&
 mkdir -p /opt/portainer-nginx/ && cd $_ &&
 wget -O docker-compose.yml https://raw.githubusercontent.com/ngthotuan/note-script/main/docker-compose/portainer-nginx.yml &&
 docker-compose up -d
@@ -56,8 +53,9 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update &&
 sudo apt install -y docker-ce &&
 sudo usermod -aG docker ${USER} &&
-sudo curl -L "https://github.com/docker/compose/releases/download/2.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
 sudo chmod +x /usr/local/bin/docker-compose &&
+docker-compose --version &&
 mkdir -p /opt/nginx-proxy-manager/ && cd $_ &&
 wget -O docker-compose.yml https://raw.githubusercontent.com/ngthotuan/note-script/main/docker-compose/nginx-proxy-manager.yml &&
 docker-compose up -d
