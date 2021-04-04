@@ -1,0 +1,46 @@
+name: Node Github CI Dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install and test
+      run: |
+        npm install
+        npm test
+      env:
+        CI: true
+
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: SSH and deploy in server
+      uses: appleboy/ssh-action@master
+      with:
+        HOST: ${{ secrets.SSH_HOST }}
+        USERNAME: ${{ secrets.SSH_USERNAME }}
+        KEY: ${{ secrets.SSH_KEY }}
+        PORT: ${{ secrets.SSH_PORT }}
+        script: |
+          cd /opt/test-cicd
+          git pull origin dev
+          npm install --production
+          pm2 reload ecosystem.config.js --env production
