@@ -1,4 +1,4 @@
-1. Script auto config server
+# 1. Script auto config server
 sudo apt update &&
 sudo apt-get install zsh -y &&
 sudo curl -L http://install.ohmyz.sh | sh &&
@@ -12,18 +12,14 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update &&
 sudo apt install -y docker-ce &&
 sudo usermod -aG docker ${USER} &&
-sudo curl -L "https://github.com/docker/compose/releases/download/2.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
 sudo chmod +x /usr/local/bin/docker-compose &&
-curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&
-sudo apt update &&
-sudo apt-get install -y nodejs &&
-sudo npm install -g pm2 &&
-pm2 startup systemd &&
+docker-compose --version &&
 sudo apt install -y nginx
 
 
-#2. Easy deploy with portaner - nginx proxy manager
-##2.1 Docker - Docker compose - Portainer - Nginx Proxy Manager
+# 2. Easy deploy with portaner - nginx proxy manager
+## 2.1 Docker - Docker compose - Portainer - Nginx Proxy Manager
 sudo apt update &&
 sudo apt-get install zsh -y &&
 sudo curl -L http://install.ohmyz.sh | sh &&
@@ -37,12 +33,13 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update &&
 sudo apt install -y docker-ce &&
 sudo usermod -aG docker ${USER} &&
-sudo curl -L "https://github.com/docker/compose/releases/download/2.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
 sudo chmod +x /usr/local/bin/docker-compose &&
+docker-compose --version &&
 mkdir -p /opt/portainer-nginx/ && cd $_ &&
 wget -O docker-compose.yml https://raw.githubusercontent.com/ngthotuan/note-script/main/docker-compose/portainer-nginx.yml &&
 docker-compose up -d
-##2.2 Docker - Docker compose - Nginx Proxy Manager
+## 2.2 Docker - Docker compose - Nginx Proxy Manager
 sudo apt update &&
 sudo apt-get install zsh -y &&
 sudo curl -L http://install.ohmyz.sh | sh &&
@@ -56,14 +53,15 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update &&
 sudo apt install -y docker-ce &&
 sudo usermod -aG docker ${USER} &&
-sudo curl -L "https://github.com/docker/compose/releases/download/2.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
 sudo chmod +x /usr/local/bin/docker-compose &&
+docker-compose --version &&
 mkdir -p /opt/nginx-proxy-manager/ && cd $_ &&
 wget -O docker-compose.yml https://raw.githubusercontent.com/ngthotuan/note-script/main/docker-compose/nginx-proxy-manager.yml &&
 docker-compose up -d
 
 
-##2.3 MailServer
+## 2.3 MailServer
 ### REPLACE YOUR HOSTNAME
 HOSTNAME=nttuan.live &&
 sudo apt-get install subversion -y &&
