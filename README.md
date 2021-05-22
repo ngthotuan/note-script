@@ -1,3 +1,10 @@
+# EASY DOWNLOAD SH FOLDER:
+
+```shell
+sudo apt-get install subversion -y && 
+svn export https://github.com/ngthotuan/note-script/trunk/sh
+```
+
 # INSTALL ZSH
 ```shell
 sudo apt-get install zsh -y &&
