@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+    
+    user-service-testing:
+        image: ${IMAGE}
+        container_name: user-service-testing
+        ports:
+        - '3004:3000'

@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-  test-website:
-    image: 'ngthotuan/test-website'
-    restart: always
-    ports:
-      - 9091:80
-    container_name: test-website

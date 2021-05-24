@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+    
+    user-service:
+        image: ${IMAGE}
+        container_name: user-service
+        ports:
+        - '3003:3000'
