@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: web
+    image: ngthotuan/my-website
+    restart: always
+    volumes:
+      - ./user-upload:/app/user-upload
+    ports:
+      - 8080:3000
+    environment:
+      DB_HOST: 'localhost'
+      DB_PORT: '27017'
+      DB_NAME: 'dbname'
+      DB_USER: 'admin'
+      DB_PASSWORD: 'admin'

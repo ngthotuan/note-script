@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    networks:
+      - mongo-network
+    ports:
+      - 27017:27017
+    volumes:
+      - /appdata/db/mongo_nguyenthotuan.me:/data/db
+      - /appdata/db/mongo_nguyenthotuan.me/configdb:/data/configdb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    restart: always
+    networks:
+      - mongo-network
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_OPTIONS_EDITORTHEME: rubyblue
+
+networks:
+  mongo-network:
+    name: mongo-network
