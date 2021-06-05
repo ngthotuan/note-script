@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+
+  web_db:
+    container_name: web_db
+    image: mongo
+    restart: always
+    networks:
+      - my-website-network
+    volumes:
+      - /appdata/db/my-website/data/db:/data/db
+      - /appdata/db/my-website/data/configdb:/data/configdb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+
+  web_db_manager:
+    container_name: web_db_manager
+    image: mongo-express
+    depends_on:
+      - web_db
+    restart: always
+    networks:
+      - my-website-network
+    ports:
+      - 8082:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+      ME_CONFIG_MONGODB_SERVER: web_db
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_OPTIONS_EDITORTHEME: rubyblue
+
+  web:
+    container_name: web
+    image: ngthotuan/my-website
+    depends_on:
+      - web_db
+    restart: always
+    volumes:
+      - /appdata/user-upload:/app/user-upload
+    ports:
+      - 8080:3000
+    networks:
+      - my-website-network
+    environment:
+      DB_HOST: 'web_db'
+      DB_PORT: '27017'
+      DB_NAME: 'nguyenthotuan_me'
+      DB_USER: 'admin'
+      DB_PASSWORD: 'admin'
+
+networks:
+  my-website-network:
+    name: my-website-network

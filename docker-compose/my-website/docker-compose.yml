@@ -6,12 +6,18 @@ services:
     image: ngthotuan/my-website
     restart: always
     volumes:
-      - ./user-upload:/app/user-upload
+      - /appdata/user-upload:/app/user-upload
     ports:
       - 8080:3000
+    networks:
+      - my-website-network
     environment:
-      DB_HOST: 'localhost'
+      DB_HOST: 'web_db'
       DB_PORT: '27017'
-      DB_NAME: 'dbname'
+      DB_NAME: 'nguyenthotuan_me'
       DB_USER: 'admin'
       DB_PASSWORD: 'admin'
+
+networks:
+  my-website-network:
+    name: my-website-network

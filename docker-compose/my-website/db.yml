@@ -1,36 +1,37 @@
 version: '3.8'
 
 services:
-  mongo:
-    container_name: mongo
+
+  web_db:
+    container_name: web_db
     image: mongo
     restart: always
     networks:
-      - mongo-network
-    ports:
-      - 27017:27017
+      - my-website-network
     volumes:
-      - /appdata/db/mongo_nguyenthotuan.me:/data/db
-      - /appdata/db/mongo_nguyenthotuan.me/configdb:/data/configdb
+      - /appdata/db/my-website/data/db:/data/db
+      - /appdata/db/my-website/data/configdb:/data/configdb
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
 
-  mongo-express:
-    container_name: mongo-express
+  web_db_manager:
+    container_name: web_db_manager
     image: mongo-express
     restart: always
     networks:
-      - mongo-network
+      - my-website-network
     ports:
       - 8081:8081
     environment:
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: admin
+      ME_CONFIG_MONGODB_SERVER: web_db
+      ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: admin
       ME_CONFIG_OPTIONS_EDITORTHEME: rubyblue
 
 networks:
-  mongo-network:
-    name: mongo-network
+  my-website-network:
+    name: my-website-network
