@@ -1,0 +1,67 @@
+version: "3"
+
+services:
+  mongos:
+    container_name: mongos
+    image: mongo
+    ports:
+      - 57017:27017
+    command: mongos --port 27017 --configdb rsConfig/mongoConfig_primary:27017,mongoConfig_secondary1:27017,mongoConfig_secondary2:27017 --bind_ip_all
+  
+  mongoConfig_primary:
+    container_name: mongoConfig_primary
+    image: mongo
+    ports:
+      - 27017:27017
+    command: mongod --port 27017 --bind_ip_all --configsvr --replSet rsConfig
+  
+  mongoConfig_secondary1:
+    container_name:  mongoConfig_secondary1
+    image: mongo
+    ports:
+      - 27018:27017
+    command: mongod --port 27017 --bind_ip_all --configsvr --replSet rsConfig
+  mongoConfig_secondary2:
+    container_name:  mongoConfig_secondary2
+    image: mongo
+    ports:
+      - 27019:27017
+    command: mongod --port 27017 --bind_ip_all --configsvr --replSet rsConfig
+
+  mongo1_primary:
+    container_name: mongo1_primary
+    image: mongo
+    ports:
+      - 37017:27017
+    command: mongod --port 27017 --bind_ip_all --shardsvr --replSet rs1
+  mongo1_secondary1:
+    container_name: mongo1_secondary1
+    image: mongo
+    ports:
+      - 37018:27017
+    command: mongod --port 27017 --bind_ip_all --shardsvr --replSet rs1
+  mongo1_secondary2:
+    container_name: mongo1_secondary2
+    image: mongo
+    ports:
+      - 37019:27017
+    command: mongod --port 27017 --bind_ip_all --shardsvr --replSet rs1
+
+  mongo2_primary:
+    container_name: mongo2_primary
+    image: mongo
+    ports:
+      - 47017:27017
+    command: mongod --port 27017 --bind_ip_all --shardsvr --replSet rs2
+  mongo2_secondary1:
+    container_name: mongo2_secondary1
+    image: mongo
+    ports:
+      - 47018:27017
+    command: mongod --port 27017 --bind_ip_all --shardsvr --replSet rs2
+  mongo2_secondary2:
+    container_name: mongo2_secondary2
+    image: mongo
+    ports:
+      - 47019:27017
+    command: mongod --port 27017 --bind_ip_all --shardsvr --replSet rs2

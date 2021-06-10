@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  nginx:
+    image: test-nginx
+    build: ./nginx
+    ports:
+      - 8080:8080
+  server1:
+    hostname: server1
+    image: test
+    build: ./app
+    ports:
+      - 3000:3000
+  server2:
+    hostname: server2
+    image: test
+    build: ./app
+    ports:
+      - 4000:3000
+  server3:
+    hostname: server3
+    image: test
+    build: ./app
+    ports:
+      - 5000:3000
