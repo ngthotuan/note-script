@@ -93,6 +93,8 @@ cat ~/.ssh/id_rsa.pub
 For example:
 ```shell
  rsync -avzp /appdata/ -e ssh 139.59.254.47:/appdata/
+ rsync --exclude digitalocean --exclude containerd -avzp /opt -e ssh 139.59.231.20:/
+
 ```
 More information please see [here](https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/)
 ### 1.4 Restore db,...etc
