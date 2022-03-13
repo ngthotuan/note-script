@@ -1,18 +1,16 @@
 How to install windows on digital ocean,
 use this tutorial :
 https://milankragujevic.com/how-to-install-windows-10-on-digitalocean
-
 or if you want to create own image :
 https://glitchwitch.io/blog/2018-09/windows-10-on-digitalocean/
 
 http://v2.nttuan.tech/static/win10.gz
 wget -O- http://v2.nttuan.tech/static/win10.gz | gunzip | dd of=/dev/vda
 wget -O win10.gz http://v2.nttuan.tech/static/win10.gz
-Username: Administrator
+Username: WhatUpTime.com
 Password: P@ssword64
 
-or: 
+multi image: 
 https://www.danielcardoso.ovh/?dir=WUT/VirtIO
-
 or Mega.nz
 https://mega.nz/#!thRU1IwS!By1GfjZCkGblLm0YXQKR12OV8LCr4nqCnUHwGKxbURM
