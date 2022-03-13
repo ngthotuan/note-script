@@ -6,6 +6,8 @@ or if you want to create own image :
 https://glitchwitch.io/blog/2018-09/windows-10-on-digitalocean/
 
 http://v2.nttuan.tech/static/win10.gz
+wget -O- http://v2.nttuan.tech/static/win10.gz | gunzip | dd of=/dev/vda
+wget -O win10.gz http://v2.nttuan.tech/static/win10.gz
 Username: Administrator
 Password: P@ssword64
 
