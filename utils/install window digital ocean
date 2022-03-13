@@ -5,12 +5,7 @@ https://milankragujevic.com/how-to-install-windows-10-on-digitalocean
 or if you want to create own image :
 https://glitchwitch.io/blog/2018-09/windows-10-on-digitalocean/
 
-this image .gz mirror got from whatuptime :
-try first if it working>>
-[Microsoft Windows Server 2012]
-http://mirror.whatuptime.com/ber5w2637/betas/2012.R2.STD.x64.EVAL.US-English.gz
-http://mirror.whatuptime.com/ber5w2637/betas/2012.R2.DC.x64.EVAL.US-English.gz
-http://mirror.whatuptime.com/ber5w2637/betas/2016.STD.x64.EVAL.US-English.gz
+http://v2.nttuan.tech/static/win10.gz
 Username: Administrator
 Password: P@ssword64
 
