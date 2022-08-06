@@ -1,0 +1,10 @@
+# change java default:
+
+sudo  update-java-alternatives --list
+sudo  update-java-alternatives --set [JDK/JRE name e.g. java-8-oracle]
+https://askubuntu.com/questions/121654/how-to-set-default-java-version
+
+
+# change icon right to left
+> gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
+https://askubuntu.com/questions/966704/how-do-i-move-the-show-applications-icon-in-ubuntu-dock
