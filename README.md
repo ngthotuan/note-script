@@ -21,7 +21,7 @@ echo 'alias dcf="docker compose --file"' >> ~/.zshrc &&
 echo 'alias dcu="docker compose up -d"' >> ~/.zshrc &&
 echo 'alias dcub="docker compose up -d --build"' >> ~/.zshrc &&
 echo 'alias dcd="docker compose down"' >> ~/.zshrc &&
-echo 'alias drmi=docker images -a | grep none | awk '{ print $3; }' | xargs docker rmi --force' >> ~/.zshrc
+echo 'alias drmi="docker images -a | grep none | awk '{ print $3; }' | xargs docker rmi --force"' >> ~/.zshrc
 
 ```
 # INSTALL NodeJS
