@@ -7,6 +7,7 @@ svn export https://github.com/ngthotuan/note-script/trunk/sh
 
 # INSTALL ZSH
 ```shell
+sudo apt-get install git -y &&
 sudo apt-get install zsh -y &&
 sudo curl -L http://install.ohmyz.sh | sh &&
 chsh -s $(which zsh) &&
@@ -15,11 +16,12 @@ echo 'source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions
 echo 'alias dpsa="docker ps -a"' >> ~/.zshrc &&
 echo 'alias di="docker images"' >> ~/.zshrc &&
 echo 'alias de="docker exec -it"' >> ~/.zshrc &&
-echo 'alias dc="docker-compose"' >> ~/.zshrc &&
-echo 'alias dcf="docker-compose --file"' >> ~/.zshrc &&
-echo 'alias dcu="docker-compose up -d"' >> ~/.zshrc &&
-echo 'alias dcub="docker-compose up -d --build"' >> ~/.zshrc &&
-echo 'alias dcd="docker-compose down"' >> ~/.zshrc
+echo 'alias dc="docker compose"' >> ~/.zshrc &&
+echo 'alias dcf="docker compose --file"' >> ~/.zshrc &&
+echo 'alias dcu="docker compose up -d"' >> ~/.zshrc &&
+echo 'alias dcub="dockercompose up -d --build"' >> ~/.zshrc &&
+echo 'alias dcd="docker compose down"' >> ~/.zshrc &&
+echo 'alias drmi=docker images -a | grep none | awk '{ print $3; }' | xargs docker rmi --force' >> ~/.zshrc
 
 ```
 # INSTALL NodeJS
@@ -57,10 +59,7 @@ sudo apt update &&
 sudo apt install -y docker-ce &&
 sudo usermod -aG docker ${USER} &&
 su - ${USER} &&
-id -nG &&
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
-sudo chmod +x /usr/local/bin/docker-compose &&
-docker-compose --version
+id -nG
 ```
 Add user to docker: sudo usermod -aG docker 'username'
 
